@@ -1,0 +1,117 @@
+.header {
+    width: 100%;
+    height: 110px;
+    position: relative;
+    background: linear-gradient(180deg, red 50%, white 50%);
+}
+.background-header{
+    display: flex;
+}
+
+.nameShop{
+    position: absolute;
+        left: 30.42%;
+        right: 29.72%;
+        top: 27.27%;
+        bottom: 22.73%;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 48px;
+        line-height: 58px;
+        text-align: center;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: black;
+        color: #ffffff;
+    
+        mix-blend-mode: normal;
+        text-shadow: 2px 3px 0px rgba(0, 0, 0, 0.3);
+}
+.cart_icon{
+    position: absolute;
+        left: 90.42%;
+        right: 6.46%;
+        top: 31.82%;
+        bottom: 27.27%;;
+        width: 45px;
+        height: 45px;
+}
+.search__bar{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content_bar{
+    position: relative;
+}
+.content_bar input{
+    width: 300px;
+    height: 24px;
+    border-radius: 12px;
+    padding: 10px;
+    padding-left: 50px ;
+}
+.magnifyingglass{
+    width: 18px;
+    position: absolute;
+    left: 10px;
+    top: 1px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+.content_bar img{
+    width: 100%;
+    
+}
+.slider{
+    width: 100%;
+    height: 400px;
+    position: relative;
+    background: linear-gradient(180deg, red 50%, white 50%);
+}
+.slider .red{
+    height: 47.5%;
+}
+.slider .white{
+    height: 47.5%;
+}
+.line_black{
+    width: 100%;
+    height: 5%;
+    background-color: black;
+}
+.slider img{
+    
+    width: 100%;
+}
+.background_poke{
+    position: absolute;
+    width: 812px;
+    height: 392px;
+    bottom: 1px;
+    left: 300px;
+}
+input{
+    border: none;
+}
+
+.card__item {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+.quantity{
+    display: inline;
+    border-radius: 10px;
+    font-size: medium;
+    position: absolute;
+    right: 6%;
+    top: 30%;
+    color: yellow
+}

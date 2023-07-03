@@ -1,0 +1,138 @@
+.header {
+    width: 100%;
+    height: 110px;
+    position: relative;
+    background: linear-gradient(180deg, red 50%, white 50%);
+}
+
+.background-header {
+    display: flex;
+}
+
+
+.nameShop {
+    position: absolute;
+    left: 30.42%;
+    right: 29.72%;
+    top: 27.27%;
+    bottom: 22.73%;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 58px;
+    text-align: center;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    color: #ffffff;
+
+    mix-blend-mode: normal;
+    text-shadow: 2px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.cart_icon {
+    position: absolute;
+    left: 90.42%;
+    right: 6.46%;
+    top: 31.82%;
+    bottom: 27.27%;
+    ;
+    width: 45px;
+    height: 45px;
+}
+.body{
+    width: 95%;
+    margin: 0 auto;
+
+}
+.cart_body{
+    width: 100%;
+    
+    border-radius: 12px;
+    margin-top: 30px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+.cart_body_header{
+    width: 90%;
+    display: flex;
+    margin: 10px;    
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.continues_shopping{
+    width: 50%;
+    display: flex;
+    text-align: start;
+}
+.continues_shopping #text {
+    margin-top: 15px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+    
+}
+.continues_shopping #back{
+    color: black;
+}
+.have_item{
+    width: 50%;
+    text-align: end;
+    margin: auto 0;
+    font-size: large;
+    font-weight: 600;
+}
+svg{
+    margin-top:15px ;
+    margin-left: 10px;
+}
+
+.cart_item_added{
+    width: 90%;
+    height: 120px;
+    margin-top:10px ;
+    border: 2px solid rgb(3, 3, 3);
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.img_item_add{
+    max-width: 30%;
+    height: 100%;
+}
+.img_item_add img{
+    width: 100%;
+    height: 100%;
+}   
+.name_item{
+    font-size: 50px
+}
+.quantily{
+    font-size: 40px
+}
+.btn_remove button{
+    color: wheat;
+    background-color: red;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.quantity{
+    display: inline;
+    border-radius: 10px;
+    font-size: medium;
+    position: absolute;
+    right: 6%;
+    top: 30%;
+    color: yellow
+}
+.btn_view{
+    height: 40px;
+    width: 40px;
+    border: 1px solid rgb(118, 182, 235);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
