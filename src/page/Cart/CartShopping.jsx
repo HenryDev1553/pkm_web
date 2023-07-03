@@ -91,11 +91,11 @@ function CartShopping() {
         <div className="cart_body">
           <div className="cart_body_header">
             <div className="continues_shopping">
-              <Link id="back" to="/">
+              <Link id="back" to="/dashboard">
                 <AiOutlineArrowLeft />
               </Link>
 
-              <Link id="text" to="/">
+              <Link id="text" to="/dashboard">
                 <strong>Continues Shopping</strong>
               </Link>
             </div>

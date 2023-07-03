@@ -1,0 +1,9 @@
+.logo {}
+
+#container {
+    background: rgb(173, 199, 100)
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

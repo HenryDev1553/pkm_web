@@ -30,7 +30,7 @@ function DashBroad(props) {
       <div className="header ">
         <p className="nameShop">POKÉMON SHOP</p>
         <div className="cart">
-          <Link to="cart">
+          <Link to="/cart">
             <img src={CartIcon} alt="cart-icon" className="cart_icon" />
           </Link>
           <div className="quantity">{cartSlice.quantity}</div>
