@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useEffect } from "react";
-import { Login } from "../page/LoginShop/login";
+import { Login } from "../page/LoginShop/Login";
 import DashBroad from "../page/DashBroad/DashBroad";
 import CartShopping from "../page/Cart/CartShopping";
 import { Route, Routes, useNavigate } from "react-router-dom";
