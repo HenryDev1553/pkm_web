@@ -7,12 +7,14 @@ import CardItem from "./CardItem";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { FormAdd } from "../FormAdd/FormAdd";
 
 // import { CartIcon }
 
 function DashBroad(props) {
   const [pokemonList, setPokemonList] = useState([]);
   const { cartSlice } = useSelector((state) => state);
+  const [togglePop, setTogglePop] = useState(false);
 
   useEffect(() => {
     axios
@@ -34,6 +36,12 @@ function DashBroad(props) {
             <img src={CartIcon} alt="cart-icon" className="cart_icon" />
           </Link>
           <div className="quantity">{cartSlice.quantity}</div>
+        </div>
+        <div className="form_add_view">
+          <button onClick={() => setTogglePop(true)} className="form_btn_view">
+            <p>Add New Item</p>
+          </button>
+          <FormAdd trigger={togglePop} setTrigger={setTogglePop}></FormAdd>
         </div>
       </div>
       <div className="search__bar">

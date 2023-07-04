@@ -115,3 +115,18 @@ input{
     top: 30%;
     color: yellow
 }
+a{
+    cursor: pointer;
+}
+.form_btn_view{
+    height: 60px;
+    width: 100px;
+    border: 1px solid rgb(118, 182, 235);
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 200;
+    position: absolute;
+    top: 28px;
+    right: 150px;
+    background: rgb(201, 121, 121);
+}

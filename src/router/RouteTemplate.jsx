@@ -22,11 +22,9 @@ export default function RouteTemplate() {
 
   return (
     <Routes>
-      <Route path="/" element={<FormAdd />} />
+      <Route path="/" element={<Login />} />
       <Route path="dashboard" element={<DashBroad />} />
       <Route path="cart" element={<CartShopping />} />
-      <Route path="formadd" element={<FormAdd />} />
-
       <Route path="*" element={<h1>Page not found</h1>} />
     </Routes>
   );

@@ -1,122 +1,113 @@
 import React from "react";
 import CartIcon from "../../assets/image/cart-icon.png";
 import "./FormAdd.css";
-import {
-  Button,
-  Cascader,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Radio,
-  Select,
-  Switch,
-  TreeSelect,
-} from "antd";
+import { Button, Space } from "antd";
+
 import { useState } from "react";
 import { UploadImg } from "../../components/UploadImg";
-export const FormAdd = () => {
-  const [componentSize, setComponentSize] = useState("default");
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
-  };
-  return (
-    <>
-      <div className="header ">
-        <p className="nameShop">POKÉMON SHOP</p>
-        <div className="cart">
-          <img src={CartIcon} alt="cart-icon" className="cart_icon" />
-        </div>
-      </div>
-      <div className="form_mid">
-        <p className="name">ADD NEW POKÉMON</p>
-        <div className="body_form">
-          {/* Form */}
-          <Form
-            labelCol={{
-              span: 4,
-            }}
-            wrapperCol={{
-              span: 20,
-            }}
-            layout="horizontal"
-            initialValues={{
-              size: componentSize,
-            }}
-            onValuesChange={onFormLayoutChange}
-            size={componentSize}
-            style={{
-              maxWidth: 640,
-            }}
-          >
-            {/* <Form.Item label="Form Size" name="size">
-            <Radio.Group>
-              <Radio.Button value="small">Small</Radio.Button>
-              <Radio.Button value="default">Default</Radio.Button>
-              <Radio.Button value="large">Large</Radio.Button>
-            </Radio.Group>
-          </Form.Item> */}
-            <Form.Item label="Name">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Type">
-              <Select>
-                <Select.Option value="Grass">Grass</Select.Option>
-                <Select.Option value="Water">Water</Select.Option>
-                <Select.Option value="Fire">Fire</Select.Option>
-              </Select>
-            </Form.Item>
-            <div className="upload_img">
-              <UploadImg />
-            </div>
+import { newItem } from "../../components/NewItemSlice.js";
+import { useDispatch } from "react-redux";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 
-            <Form.Item label="TreeSelect">
-              <TreeSelect
-                treeData={[
-                  {
-                    title: "Light",
-                    value: "light",
-                    children: [
-                      {
-                        title: "Bamboo",
-                        value: "bamboo",
-                      },
-                    ],
-                  },
-                ]}
-              />
-            </Form.Item>
-            <Form.Item label="Cascader">
-              <Cascader
-                options={[
-                  {
-                    value: "zhejiang",
-                    label: "Zhejiang",
-                    children: [
-                      {
-                        value: "hangzhou",
-                        label: "Hangzhou",
-                      },
-                    ],
-                  },
-                ]}
-              />
-            </Form.Item>
-            <Form.Item label="DatePicker">
-              <DatePicker />
-            </Form.Item>
-            <Form.Item label="InputNumber">
-              <InputNumber />
-            </Form.Item>
-            <Form.Item label="Switch" valuePropName="checked">
-              <Switch />
-            </Form.Item>
-            <Form.Item label="Button">
-              <Button>Button</Button>
-            </Form.Item>
-          </Form>
+export const FormAdd = (props) => {
+  const [inputAtk, setInputAtk] = useState(1);
+  const onChangeAtk = (newValue) => {
+    setInputAtk(newValue);
+  };
+  const [inputDef, setInputDef] = useState(1);
+  const onChangeDef = (newValue) => {
+    setInputDef(newValue);
+  };
+  const [inputHeight, setInputHeight] = useState(0);
+  const onChangeHeight = (e) => {
+    setInputHeight(e);
+  };
+  const [inputWeight, setInputWeight] = useState(0);
+  const onChangeWeight = (e) => {
+    setInputWeight(e);
+  };
+  const [inputHp, setInputHp] = useState(0);
+  const onChangeHp = (e) => {
+    setInputHp(e);
+  };
+
+  // event.preventDefault();
+  // let AddValue = {
+  //   name: event.target[0].value,
+  //   type: event.target[1].value,
+  //   img: event.target[2].value,
+  //   hp: event.target[3].value,
+  //   height: event.target[4].value,
+  //   weight: event.target[5].value,
+  //   atk: event.target[6].value,
+  //   def: event.target[7].value,
+  //   date: event.target[8].value,
+  // };
+  // const FormNewValue = {
+  //   name: event.target[0].value,
+  //   type: event.target[1].value,
+  //   img: event.target[2].value,
+  //   hp: event.target[3].value,
+  //   height: event.target[4].value,
+  //   weight: event.target[5].value,
+  //   atk: event.target[6].value,
+  //   def: event.target[7].value,
+  //   date: event.target[8].value,
+  // };
+  // const {
+  //   register,
+  //   reset,
+  //   setError,
+  //   formState: { errors },
+  // } = useForm({
+  //   defaultValues: FormNewValue,
+  //   resolver: yupResolver(schema),
+  // });
+
+  // const dispatch = useDispatch();
+
+  // const addNewItem = (name) => {
+  //   dispatch(newItem(name));
+  // };
+  const [nameItem, setNameItem] = useState("");
+  return props.trigger ? (
+    <>
+      <div className="view_detail">
+        <div className="detail">
+          <div className="header_view">
+            <Button
+              className="close_btn"
+              onClick={() => props.setTrigger(false)}
+            >
+              X
+            </Button>
+            <p className="name">ADD NEW POKÉMON</p>
+            <div className="body_form">
+              {/* Form */}
+              <div className="left_form">
+                <form>
+                  <label htmlFor="Name">
+                    <input type="text" />
+                  </label>
+                </form>
+                <div className="upload_img">
+                  <UploadImg />
+                </div>
+              </div>
+
+              <div className="right_form">Hekko</div>
+            </div>
+            <div className="btn_add">
+              <button>ADD</button>
+            </div>
+          </div>
+
+          {props.children}
         </div>
       </div>
     </>
+  ) : (
+    ""
   );
 };
