@@ -34,3 +34,16 @@
 .erorr{
     color: red;
 }
+.react-datepicker__input-container input{
+    border-radius: 5px
+}
+.add_btn{
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+.btn_add{
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

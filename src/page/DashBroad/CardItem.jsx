@@ -17,7 +17,6 @@ function CardItem(props) {
   const addDetail = (name) => {
     dispatch(addItem(name));
   };
-
   return (
     <>
       <div className="card_item_container">

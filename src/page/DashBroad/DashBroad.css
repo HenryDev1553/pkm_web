@@ -130,3 +130,14 @@ a{
     right: 150px;
     background: rgb(201, 121, 121);
 }
+.view_list_item{
+    position: absolute;
+    right: 266px;
+    top: 30px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    border: 3cap solid black;
+}

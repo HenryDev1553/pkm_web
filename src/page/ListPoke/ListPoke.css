@@ -1,0 +1,11 @@
+.body_container{
+    margin-top: 100px;
+    background: white
+}
+.list_view{
+    width: 1000px;
+    margin-top: 20px;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

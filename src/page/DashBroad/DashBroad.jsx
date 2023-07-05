@@ -43,6 +43,9 @@ function DashBroad(props) {
           </button>
           <FormAdd trigger={togglePop} setTrigger={setTogglePop}></FormAdd>
         </div>
+        <div className="view_list_item">
+          <Link to="/list">List Item</Link>
+        </div>
       </div>
       <div className="search__bar">
         <div className="content_bar">

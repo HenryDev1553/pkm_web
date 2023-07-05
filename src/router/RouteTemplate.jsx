@@ -5,7 +5,7 @@ import { Login } from "../page/LoginShop/Login";
 import DashBroad from "../page/DashBroad/DashBroad";
 import CartShopping from "../page/Cart/CartShopping";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { FormAdd } from "../page/FormAdd/FormAdd";
+import { ListPokemon } from "../page/ListPoke/ListPokemon";
 
 export default function RouteTemplate() {
   let navigate = useNavigate();
@@ -25,6 +25,7 @@ export default function RouteTemplate() {
       <Route path="/" element={<Login />} />
       <Route path="dashboard" element={<DashBroad />} />
       <Route path="cart" element={<CartShopping />} />
+      <Route path="list" element={<ListPokemon />} />
       <Route path="*" element={<h1>Page not found</h1>} />
     </Routes>
   );
