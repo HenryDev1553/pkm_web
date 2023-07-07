@@ -1,38 +1,60 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Tree } from "antd";
 
-const initialState2 = {
-    quantity: 0,
-    item_array:[]
-}
+const initialState = {
+  quantity: 0,
+  item_array: [],
+  loading: false,
+};
 
 const NewItemSlice = createSlice({
-    name: "newItemSlice1213",
-    initialState: initialState2,
-    reducers: {
-        newItem(state, action) {
-            if (state.item_array.length === 0) {
-                state.item_array.push(action.payload)
-                state.quantity++
-            } else {
-                const index = state.item_array.findIndex((item) =>
-                    item.name === action.payload.name,
-                )
-                if (index < 0) {
-                    state.item_array.push(action.payload)
-                    state.quantity++
-
-                } else {
-                    const temp_arr = [...state.item_array]
-                    temp_arr[index].sl++
-                    state.item_array = [...temp_arr]
-                    state.quantity++
-                }
-            }
-            
-            
+  name: "newItemSlice",
+  initialState: initialState,
+  reducers: {
+    newItem(state, action) {
+      state.loading = true;
+      if (state.item_array.length === 0) {
+        state.item_array.push(action.payload);
+        state.quantity++;
+        state.loading = !state.loading;
+      } else {
+        const index = state.item_array.findIndex(
+          (item) => item.name === action.payload.name
+        );
+        if (index < 0) {
+          state.item_array.push(action.payload);
+          state.quantity++;
+          state.loading = !state.loading;
+        } else {
+          const temp_arr = [...state.card_array];
+          state.card_array = [...temp_arr];
+          state.quantity++;
+          state.loading = !state.loading;
         }
-    }
-})
-export default NewItemSlice.reducer
-export const {newItem} = NewItemSlice.actions
-
+      }
+      // state.loading = !state.loading ;
+    },
+    remove(state, action) {
+      if (state.item_array.length === 0) {
+        return;
+      } else {
+        const index = state.item_array.findIndex(
+          (item) => item.name === action.payload.name
+        );
+        if (index !== -1) {
+          const findItem = state.card_array.find(
+            (item) => item.name === action.payload.name
+          );
+        } else {
+          const tmp = state.item_array.filter(
+            (item) => item.name !== action.payload.id
+          );
+          state.item_array = [...tmp];
+          state.quantity--;
+        }
+      }
+    },
+  },
+});
+export default NewItemSlice.reducer;
+export const { newItem, remove } = NewItemSlice.actions;

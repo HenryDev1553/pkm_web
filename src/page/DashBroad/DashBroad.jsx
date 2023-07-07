@@ -41,7 +41,6 @@ function DashBroad(props) {
           <button onClick={() => setTogglePop(true)} className="form_btn_view">
             <p>Add New Item</p>
           </button>
-          <FormAdd trigger={togglePop} setTrigger={setTogglePop}></FormAdd>
         </div>
         <div className="view_list_item">
           <Link to="/list">List Item</Link>
@@ -76,6 +75,9 @@ function DashBroad(props) {
           <CardItem key={item.name} name={item.name} url={item.url} />
         ))}
       </div>
+      {togglePop && (
+        <FormAdd setTrigger={setTogglePop} editValue={{}}></FormAdd>
+      )}
     </>
   );
 }

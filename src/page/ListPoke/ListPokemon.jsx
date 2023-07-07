@@ -1,66 +1,125 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./ListPoke.css";
 import CartIcon from "../../assets/image/cart-icon.png";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { Space, Table, Tag } from "antd";
+import { remove } from "../../components/NewItemSlice";
+import ViewDetailItem from "./ViewDetailItem";
+import { useState } from "react";
+import { FormAdd } from "../FormAdd/FormAdd";
 
 export const ListPokemon = () => {
   const { NewItemSlice } = useSelector((state) => state);
+  const [togglePop, setTogglePop] = useState(false);
+  const [togglePop2, setTopgglePop2] = useState(false);
+  const [editValue, setEditValue] = useState([]);
+  const dispatch = useDispatch();
 
-  const render = () => {
-    return NewItemSlice.item_array.map((items) => (
-      <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" class="px-6 py-3 ">
-                Pokemon Name
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Type
-              </th>
-              <th scope="col" class="px-6 py-3">
-                HP
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Height
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Weight
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Attack
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Defence
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Số Lượng
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                {items.name}
-              </th>
-              <td class="px-6 py-4 ">{items.type}</td>
-              <td class="px-6 py-4 ">{items.hp}</td>
-              <td class="px-6 py-4 ">{items.height}</td>
-              <td class="px-6 py-4 ">{items.weight}</td>
-              <td class="px-6 py-4 ">{items.atk}</td>
-              <td class="px-6 py-4 ">{items.def}</td>
-              <td class="px-6 py-4 ">{items.sl}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    ));
+  const removeI = (item) => {
+    dispatch(remove(item));
   };
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Type",
+      dataIndex: "type",
+      key: "Type",
+    },
+    {
+      title: "Date",
+      dataIndex: "date",
+      key: "date",
+    },
+    {
+      title: "HP",
+      dataIndex: "hp",
+      key: "hp",
+    },
+    {
+      title: "Height",
+      dataIndex: "height",
+      key: "height",
+    },
+    {
+      title: "Weight",
+      dataIndex: "weight",
+      key: "weight",
+    },
+    {
+      title: "Defence",
+      dataIndex: "def",
+      key: "def",
+    },
+    {
+      title: "Attack",
+      key: "atk",
+      dataIndex: "atk",
+    },
+    {
+      title: "",
+      key: "action",
+      render: (_, record) => (
+        <Space size="middle">
+          <a onClick={() => setTogglePop(true)}>View</a>
+          <ViewDetailItem trigger={togglePop} setTrigger={setTogglePop}>
+            <div className="img_view">
+              <img src={record.img} alt="" />
+            </div>
+            <div className="info_view">
+              <div className="name_info">
+                <strong>{record.name}</strong>
+              </div>
+              <div className="properties_view">
+                <div className="info_detail">
+                  <div className="left_info">
+                    <p>Type</p>
+                    <p>Height</p>
+                    <p>Weight</p>
+                  </div>
+                  <div className="right_info">
+                    <p>{record.type}</p>
+                    <p>{record.height}0cm</p>
+                    <p>{record.weight}Lbs</p>
+                  </div>
+                </div>
+                <div className="exp_detail">
+                  <div className="left_exp">
+                    <p>HP</p>
+                    <p>Attack</p>
+                    <p>Defence</p>
+                  </div>
+                  <div className="right_exp">
+                    <p>{record.hp}</p>
+                    <p>{record.atk}</p>
+                    <p>{record.def}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ViewDetailItem>
+          <a onClick={() => setTopgglePop2(true)}>Edit</a>
+          <a onClick={() => removeI({ id: record.name })}>Delete</a>
+        </Space>
+      ),
+    },
+  ];
+  const data = NewItemSlice.item_array.map((item) => ({
+    name: item.name,
+    type: item.type,
+    date: new Date(item.date).toDateString(),
+    hp: item.hp,
+    height: item.height,
+    weight: item.weight,
+    def: item.def,
+    atk: item.atk,
+    img: item.img,
+  }));
   return (
     <>
       <div className="header ">
@@ -82,12 +141,20 @@ export const ListPokemon = () => {
               </Link>
             </div>
             <div className="have_item">
-              You have {NewItemSlice.quantity} items in your cart
+              You have {NewItemSlice.quantity} items in your list
             </div>
-            <div className="list_view">{render()}</div>
+            <div className="list_view">
+              <Table columns={columns} dataSource={data} />
+            </div>
           </div>
         </div>
       </div>
+      {togglePop2 && (
+        <FormAdd
+          setTrigger={setTopgglePop2}
+          editValue={{ editValue }}
+        ></FormAdd>
+      )}
     </>
   );
 };
